@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Página de Inicio{% endblock %}
+
+{% block content %}
+<section class="hero-section bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4 mb-3">BIENVENIDO A LA COMUNIDAD DEL ASADO</h1>
+        <p class="lead mb-4">LAS MEJORES RECETAS PARA LA PARRILLA</p>
+        <a href="{% url 'lista_recetas' %}" class="btn btn-light btn-lg">Explora Nuestras Recetas</a>
+    </div>
+</section>
+{% endblock %}

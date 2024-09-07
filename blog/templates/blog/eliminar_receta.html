@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Receta{% endblock %}
+
+{% block content %}
+<section class="page-section py-5 bg-dark">
+    <div class="container">
+        <h1 class="text-center mb-4 text-white">Eliminar Receta</h1>
+        <div class="alert alert-warning text-center" role="alert">
+            ¿Estás seguro de que deseas eliminar "<strong>{{ receta.titulo }}</strong>"?
+        </div>
+        <form method="post" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="{% url 'detalle_receta' receta.id %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

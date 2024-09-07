@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Lista de Recetas{% endblock %}
+
+{% block content %}
+<section class="page-section recipes-section py-5 bg-dark">
+    <div class="container">
+        <h1 class="text-center mb-4 text-white">LISTA DE RECETAS</h1>
+        {% if user.is_authenticated %}
+            <div class="text-center mb-4">
+                <a href="{% url 'agregar_receta' %}" class="btn btn-primary">Agregar nueva receta</a>
+            </div>
+        {% endif %}
+        {% if recetas %}
+            <div class="row">
+                {% for receta in recetas %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card border-0 shadow-sm bg-dark text-white">
+                            {% if receta.imagen %}
+                                <img src="{{ receta.imagen.url }}" class="card-img-top" alt="{{ receta.titulo }}">
+                            {% else %}
+                                <img src="{% static 'img/default_image.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title text-white">{{ receta.titulo }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ receta.subtitulo }}</h6>
+                                <a href="{% url 'detalle_receta' receta.id %}" class="btn btn-light">Ver detalles</a>
+                                {% if user.is_authenticated %}
+                                    {% if user == receta.autor %}
+                                        <a href="{% url 'editar_receta' receta.id %}" class="btn btn-warning">Editar</a>
+                                        <a href="{% url 'eliminar_receta' receta.id %}" class="btn btn-danger">Eliminar</a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center text-white">No hay recetas aún.</p>
+        {% endif %}
+        <div class="text-center mt-4">
+            <a href="{% url 'inicio' %}" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

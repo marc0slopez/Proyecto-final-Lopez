@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Agregar Receta{% endblock %}
+
+{% block content %}
+<section class="container mt-5">
+    <h2 class="text-center mb-4 text-white">COMPARTI TU RECETA!</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_titulo" class="form-label">Título</label>
+                            {{ form.titulo.errors }}
+                            <input type="text" name="titulo" id="id_titulo" class="form-control" value="{{ form.titulo.value }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_subtitulo" class="form-label">Subtítulo</label>
+                            {{ form.subtitulo.errors }}
+                            <input type="text" name="subtitulo" id="id_subtitulo" class="form-control" value="{{ form.subtitulo.value }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_cuerpo" class="form-label">Descripción</label>
+                            {{ form.cuerpo.errors }}
+                            <textarea name="cuerpo" id="id_cuerpo" class="form-control" rows="4">{{ form.cuerpo.value }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_imagen" class="form-label">Imagen</label>
+                            {{ form.imagen.errors }}
+                            <input type="file" name="imagen" id="id_imagen" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Agregar Receta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

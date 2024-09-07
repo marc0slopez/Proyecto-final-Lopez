@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle de Receta{% endblock %}
+
+{% block content %}
+<section class="page-section py-5 bg-dark text-white">
+    <div class="container">
+        <h1 class="text-white">{{ receta.titulo }}</h1>
+        <h3 class="text-white">{{ receta.subtitulo }}</h3>
+        <p class="text-white">{{ receta.cuerpo }}</p>
+
+        {% if receta.imagen %}
+            <img src="{{ receta.imagen.url }}" alt="{{ receta.titulo }}" style="max-width: 100%; border: 1px solid #fff;">
+        {% endif %}
+
+        <p class="text-white">Autor: {{ receta.autor.username }}</p>
+        <p class="text-white">Fecha de creación: {{ receta.fecha_creacion }}</p>
+
+        {% if user.is_authenticated %}
+            {% if request.user == receta.autor %}
+                <a href="{% url 'editar_receta' receta.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'eliminar_receta' receta.id %}" class="btn btn-danger">Eliminar</a>
+            {% endif %}
+        {% endif %}
+
+        <a href="{% url 'lista_recetas' %}">
+            <button class="btn btn-secondary">Volver al Listado de Recetas</button>
+        </a>
+    </div>
+</section>
+{% endblock %}

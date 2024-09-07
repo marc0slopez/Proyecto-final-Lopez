@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<section class="page-section register-section py-5" style="color: black;"> <!-- Color negro para el texto -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-5">
+                        <h2 class="card-title text-center mb-4" style="color: black;">Registro de Usuario</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="id_username" class="form-label" style="color: black;">Nombre de usuario:</label>
+                                <input type="text" name="username" id="id_username" class="form-control" value="{{ form.username.value|default_if_none:'' }}">
+                                {% for error in form.username.errors %}
+                                    <div class="invalid-feedback d-block" style="color: black;">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_email" class="form-label" style="color: black;">Correo electrónico:</label>
+                                <input type="email" name="email" id="id_email" class="form-control" value="{{ form.email.value|default_if_none:'' }}">
+                                {% for error in form.email.errors %}
+                                    <div class="invalid-feedback d-block" style="color: black;">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_password1" class="form-label" style="color: black;">Contraseña:</label>
+                                <input type="password" name="password1" id="id_password1" class="form-control">
+                                {% for error in form.password1.errors %}
+                                    <div class="invalid-feedback d-block" style="color: black;">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_password2" class="form-label" style="color: black;">Confirmar contraseña:</label>
+                                <input type="password" name="password2" id="id_password2" class="form-control">
+                                {% for error in form.password2.errors %}
+                                    <div class="invalid-feedback d-block" style="color: black;">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+                        </form>
+                        <div class="mt-3 text-center">
+                            <p style="color: black;">Si tenes una cuenta, <a href="{% url 'login' %}" class="btn btn-link" style="color: black;">Inicia sesión haciendo click aca</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Acerca de Mí{% endblock %}
+
+{% block content %}
+{% load static %}
+<section class="page-section about-heading">
+    <div class="container">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static 'img/about.jpg' %}" alt="Imagen de parrilla" />
+        <div class="about-heading-content">
+            <div class="row">
+                <div class="col-xl-9 col-lg-10 mx-auto">
+                    <div class="bg-faded rounded p-5" style="color: black;"> <!-- Establece el color del texto en negro -->
+                        <h2 class="section-heading mb-4" style="color: black;">
+                            <span class="section-heading-upper" style="color: black;">Pasión por la Parrilla</span>
+                            <span class="section-heading-lower" style="color: black;">Sobre Mí</span>
+                        </h2>
+                        <p style="color: black;">
+                            Un loco de la cocina y la parrilla. 
+                            Para mí, no hay nada más grande que el humo del asado y el ruido de la carne sobre el fuego.
+                            Ver a la familia y los amigos rodeando la mesa, disfrutando.
+                            Aprendí de mi viejo a meterle mano a la parrilla con lo que había, viendo y haciendo.
+                            Ahora soy de esos que no sueltan ni la pala ni el atizador. 
+                            Porque la parrilla no es solo comida, es una charla, un mate, un ferne.
+                            ¡Cuando el fuego crezca quiero estar allí!
+                        </p>
+                        <div class="intro-button mx-auto">
+                            <a class="btn btn-primary btn-xl" href="{% url 'inicio' %}">Volver al Inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
