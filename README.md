@@ -18,4 +18,5 @@ Permite a los usuarios registrar sus recetas, gestionarlas, y compartirlas con o
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL-del-repositorio>
+   git clone https://github.com/marc0slopez/Proyecto-final-Lopez
+   ```
